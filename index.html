@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/main.js" defer></script>
+</head>
+<body>
+    <!-- 共通ヘッダー（自動読み込み） -->
+    <!-- メインコンテンツ：ギャラリー枠 -->
+    <!-- ナビゲーションリンクを追加 -->        
+    <!-- 元の <ul> リンクを消して、以下のようにスッキリさせます -->
+    <nav data-include-html="/parts/menu.html"></nav>
+    
+    <!--
+        <h1>Hello, Roo Code!</h1>
+    <p>マイローカルサーバーへようこそ！</p>
+    <nav>
+        <ul>
+            <li><a href="/about.html">アバウトページを見る</a></li>
+            <li><a href="/contact.html">お問い合わせページを見る</a></li>
+        </ul>
+    </nav>
+     -->
+    <!-- メインコンテンツ：ギャラリー枠 -->
+
+    <main class="gallery-wrapper">
+        <h2>Selected Works</h2>
+
+        <div class="image-grid">
+            <!-- 各 img タグに class="gallery-img" を追加しています -->
+            <div class="grid-item">
+                <img src="./img/index003.png" alt="作品1" class="gallery-img">
+                <p class="item-title">山の風景 / 2026</p>
+            </div>
+            <!-- 作品2 -->
+            <div class="grid-item">
+                <img src="./img/index001.png" alt="作品2" class="gallery-img">
+                <p class="item-title">岩と海 / 2026</p>
+            </div>
+            <!-- 作品3 -->
+            <div class="grid-item">
+                <img src="./img/eat01.png" alt="作品3" class="gallery-img">
+                <p class="item-title">森の光 / 2026</p>
+            </div>
+            <!-- 作品4 -->
+            <div class="grid-item">
+                <img src="../img/index002.png" alt="作品4" class="gallery-img">
+                <p class="item-title">ノートとペン / 2026</p>
+            </div>
+            <!-- 作品5 -->
+            <div class="grid-item">
+                <img src="./img/IMG20241224191452.jpg" alt="作品5" class="gallery-img">
+                <p class="item-title">美しい並木 / 2026</p>
+            </div>
+            <!-- 作品6 -->
+            <div class="grid-item">
+                <img src="./img/profile01.png" alt="作品6" class="gallery-img">
+                <p class="item-title">デスクトップ / 2026</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 💡【ここを追記】モーダルウィンドウ本体（初期状態は非表示） -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalTargetImg" src="" alt="拡大画像">
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile - My Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/main.js" defer></script>
+</head>
+<body>
+
+    <!-- 共通ヘッダー（自動読み込み） -->
+    <nav data-include-html="/parts/menu.html"></nav>
+
+    <!-- メインコンテンツ：プロフィール枠 -->
+    <main class="profile-wrapper">
+        
+        <!-- 上部のメイン紹介エリア（写真と自己紹介文） -->
+        <div class="profile-main">
+            <!-- 左側：プロフィール写真（ダミー画像） -->
+            <div class="profile-image">
+                <img src="./img/profile01.png" alt="プロフィール写真">
+            </div>
+            
+            <!-- 右側：名前と自己紹介テキスト -->
+            <div class="profile-text">
+                <h1> Name：MyTwoTwo</h1>
+                <p class="subtitle">Eater / Painter / Visual Artist</p>
+                <div class="biography">
+                    <p>ここにあなたの自己紹介文を記述します。どのような想いで作品を制作しているか、普段どのような活動をしているかなど、自由に入力してください。</p>
+                    <p>テキストの量に合わせて、デザインが自動的に綺麗なバランスを保つように設計されています。余白を広めにとることで、アーティストサイトらしい洗練された空気感を演出しています。</p>
+                    <p>人参ください</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 下部の経歴・実績エリア（参考サイトの「簡歷 CV」をイメージ） -->
+        <div class="profile-cv">
+            <h2>Biography & Exhibitions</h2>
+            
+            <div class="cv-section">
+                <h3>略歴</h3>
+                <dl>
+                    <dt>2026</dt>
+                    <dd>東京都足立区綾瀬生まれ</dd>
+                    <dt>2026</dt>
+                    <dd>ウサギ大学 兎に学角 卒業</dd>
+                </dl>
+            </div>
+
+            <div class="cv-section">
+                <h3>主な展示会・個展</h3>
+
+                <!-- 下部の経歴・実績エリア（参考サイトの「簡歷 CV」をイメージ） 
+                <dl>
+                    <dt>2025</dt>
+                    <dd>個展「兎の行方」/ 東京ギャラリー</dd>
+                    <dt>2024</dt>
+                    <dd>グループ展「角ニューウェーブ・アート」/ 横浜美術館</dd>
+                    <dt>2023</dt>
+                    <dd>アートフェア・アジア・TWOTWO 2023 出展</dd>
+                </dl>
+                -->
+
+                <dl id="exhibition-list"></dl>
+
+                <!-- 管理用データ追加フォーム -->
+                <section class="admin-section" style="margin-top: 40px; padding: 20px; border: 1px dashed #ccc;">
+                    <h3>【管理者用】展示会実績の追加</h3>
+                    <form id="exhibition-form">
+                        <div style="margin-bottom: 10px;">
+                            <label for="input-year">年号 (例: 2027): </label>
+                            <input type="text" id="input-year" required placeholder="2027">
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <label for="input-title">タイトル: </label>
+                            <input type="text" id="input-title" required placeholder="未来の個展テスト" style="width: 250px;">
+                        </div>
+                        <button type="submit">データを追加する</button>
+                    </form>
+                    <p id="form-message" style="margin-top: 10px; font-weight: bold;"></p>
+                </section>
+
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

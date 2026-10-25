@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Writing - My Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/main.js" defer></script>
+</head>
+<body>
+
+    <!-- 共通ヘッダー（自動読み込み） -->
+    <nav data-include-html="/parts/menu.html"></nav>
+
+    <!-- メインコンテンツ：Writing枠（プロフィールページをベースに作成） -->
+    <main class="profile-wrapper">
+        
+        <!-- 上部のメイン紹介エリア -->
+        <div class="profile-main">
+            <!-- 左側：イメージ写真（プロフィールのものを流用） -->
+            <div class="profile-image">
+                <img src="./img/profile01.png" alt="Writing Image">
+                <!-- TODO: 将来的にイメージ写真のアップロード機能を追加する -->
+            </div>
+            
+            <!-- 右側：セクションタイトルと説明文 -->
+            <div class="profile-text">
+                <h1>Writing</h1>
+                <p class="subtitle">Thoughts, Diaries, and Notes</p>
+                <div class="biography">
+                    <p>ここでは、日々の活動の中で感じたことや、制作の裏話、ちょっとした日記などを短い文章で綴っています。</p>
+                    <p>作品とはまた違った、言葉による表現をお楽しみください。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 下部の文章一覧エリア -->
+        <div class="profile-cv">
+            <h2>Recent Entries</h2>
+            
+            <div class="cv-section">
+                <h3>Diary & Thoughts</h3>
+                <dl id="writing-list">
+                    <!-- ここにJavaScriptで文章が自動挿入されます -->
+                </dl>
+            </div>
+
+            <!-- 管理用データ追加フォーム -->
+            <section class="admin-section" style="margin-top: 40px; padding: 20px; border: 1px dashed #ccc;">
+                <h3>【管理者用】新しい文章の追加</h3>
+                <form id="writing-form">
+                    <div style="margin-bottom: 10px;">
+                        <label for="writing-date">日付 (例: 2026.10.23): </label>
+                        <input type="text" id="writing-date" required placeholder="2026.10.23">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="writing-content">内容: </label><br>
+                        <textarea id="writing-content" required placeholder="今日感じたことなどを入力してください" style="width: 100%; height: 100px;"></textarea>
+                    </div>
+                    <button type="submit">文章を追加する</button>
+                </form>
+                <p id="writing-form-message" style="margin-top: 10px; font-weight: bold;"></p>
+            </section>
+        </div>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+/* --- ここからヘッダー（メニュー）の新しいデザイン --- */
+
+/* 画面全体の余白を少しリセット */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #fafafa; /* 参考サイトのようなスッキリした白ベース */
+    color: #222;
+}
+
+/* 各ページのメインコンテンツを包む枠（中央寄せ用） */
+body > h1, body > p, body > nav {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+body > h1 {
+    margin-top: 40px;
+}
+
+/* ヘッダー全体の横幅いっぱいの帯 */
+nav[data-include-html] {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+/* ロゴとメニューを綺麗に左右に配置する（Flexbox） */
+.header-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; /* 左と右に引き離す */
+    align-items: center;            /* 上下の中央を揃える */
+}
+
+/* ロゴのデザイン */
+.site-logo a {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+/* メニューのリンク一覧（横並びにする） */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* ここでもFlexboxを使って横並びに */
+    gap: 20px;     /* リンク同士の間隔 */
+}
+
+.nav-links a {
+    color: #555;
+    font-size: 14px;
+    transition: color 0.3s; /* マウスを乗せたときにじわっと色を変える */
+}
+
+.nav-links a:hover {
+    color: #000; /* マウスを乗せたら黒にする */
+    text-decoration: none;
+}
+
+/* --- ここからギャラリー（Gridレイアウト）のデザイン --- */
+/* メインコンテンツ全体の幅を整える */
+.gallery-wrapper {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.gallery-wrapper h2 {
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: #111;
+}
+
+/* 💡 CSS Grid の設定：2段または3段のタイル状に自動で並べる */
+.image-grid {
+    display: grid;
+    /* 画面幅に合わせて、最小幅230pxの列を自動で詰め込む */
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 30px; /* 画像と画像の間のすき間 */
+}
+
+/* 各作品ごとの枠 */
+.grid-item {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 画像が枠からはみ出さないようにし、縦横比を綺麗に保つ */
+.grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* マウスを載せたときに少し透明にするアニメーション効果 */
+    transition: opacity 0.3s ease;
+}
+
+.grid-item img:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+/* 作品のタイトルの文字デザイン */
+.item-title {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #666;
+    letter-spacing: 0.5px;
+}
+/* --- ここからギャラリー（Gridレイアウト）のデザイン --- */
+
+
+/* --- ここからモーダルウィンドウ（拡大表示）のデザイン --- */
+/* モーダル全体の背景（最初は非表示・透明） */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000; /* 最前面に配置 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* 暗い半透明の背景 */
+    opacity: 0;
+    pointer-events: none; /* 非表示の時はクリックをスルーさせる */
+    transition: opacity 0.3s ease; /* ふわっと変化させる */
+}
+
+/* JavaScriptで「.open」がついたときだけ表示・フェードイン */
+.modal.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 拡大される画像自体のデザイン */
+.modal-content {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9); /* 開く前は少し小さく */
+    transition: transform 0.3s ease;
+}
+
+/* モーダルが開いたときは画像を元の大きさに（ズームイン効果） */
+.modal.open .modal-content {
+    transform: scale(1);
+}
+
+/* 閉じるボタン（×マーク） */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #bbb;
+}
+/* --- ここからモーダルウィンドウ（拡大表示）のデザイン --- */
+
+
+/* --- ここからプロフィールページのデザイン --- */
+/* プロフィール全体の幅と余白 */
+.profile-wrapper {
+    max-width: 800px;
+    margin: 40px auto 80px auto;
+    padding: 0 20px;
+}
+
+/* 写真とテキストを横並びにする（Flexbox） */
+.profile-main {
+    display: flex;
+    gap: 40px; /* 写真と文章の間のすき間 */
+    margin-bottom: 60px;
+}
+
+/* 写真エリア */
+.profile-image {
+    flex: 1; /* 横幅の比率 */
+    max-width: 320px;
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: grayscale(20%); /* 少しだけ彩度を落として落ち着いた雰囲気に */
+}
+
+/* テキストエリア */
+.profile-text {
+    flex: 1.5; /* 横幅の比率（写真より少し広め） */
+}
+
+.profile-text h1 {
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0 0 5px 0;
+    letter-spacing: 1px;
+}
+
+.profile-text .subtitle {
+    font-size: 14px;
+    color: #888;
+    margin: 0 0 25px 0;
+    letter-spacing: 1px;
+}
+
+.profile-text .biography p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* 下部の経歴（CV）エリア */
+.profile-cv {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 40px;
+}
+
+.profile-cv h2 {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.cv-section {
+    margin-bottom: 35px;
+}
+
+.cv-section h3 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 15px;
+    border-left: 2px solid #000;
+    padding-left: 10px;
+}
+
+/* 年号と内容を綺麗に並べるための定義リスト（dl, dt, dd）の装飾 */
+.cv-section dl {
+    display: grid;
+    grid-template-columns: 80px 1fr; /* 年号の幅を80pxに固定 */
+    gap: 12px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.cv-section dt {
+    font-weight: bold;
+    color: #111;
+}
+
+.cv-section dd {
+    margin: 0;
+}
+
+/* 📱 画面幅が狭いとき（スマホなど）のレスポンシブ対応 */
+@media (max-width: 650px) {
+    .profile-main {
+        flex-direction: column; /* 横並びから縦並びに変更 */
+        gap: 25px;
+    }
+    .profile-image {
+        max-width: 100%; /* 写真を横幅いっぱいに広げる */
+    }
+}
+/* --- ここからプロフィールページのデザイン --- */
