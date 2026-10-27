@@ -16,9 +16,9 @@
 2. `index.html` をブラウザで開くとサイトを確認できます。
 
 ###  URL
-[https://github.com/smd74/public.git](GIT)
+[GIT-smd74](https://github.com/smd74/public.git)
 
 ####  ※
 * メモ
-* RooCode共同作業
-* Gemini先生指導
+* **RooCode**共同作業
+* **Gemini**先生指導
