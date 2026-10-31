@@ -1,12 +1,56 @@
 /* --- ここからヘッダー（メニュー）の新しいデザイン --- */
 
 /* 画面全体の余白を少しリセット */
-body {
+body_bk00 {
     margin: 0;
     padding: 0;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background-color: #fafafa; /* 参考サイトのようなスッキリした白ベース */
     color: #222;
+}
+
+/* 全画面共通の背景設定 */
+body_bk01 {
+  /* 木目調の画像を背景に指定 */
+  background-image: url('../img/wood-bg.jpg');
+  
+  /* 画面をスクロールしても背景が動かないように固定（高級感が出ます） */
+  background-attachment: fixed;
+  
+  /* 画像の解像度に合わせて画面全体を覆うように調整 */
+  background-size: cover;
+  
+  /* 画像の中心を基準に配置 */
+  background-position: center;
+  
+  /* 万が一画像が読み込めなかった時のための、淡い木目調に近いフォールバックカラー */
+  background-color: #f4edd9;
+  
+  /* 基本の文字色（木目に馴染むように真っ黒ではなく少し濃いグレーにするのがおすすめ） */
+  color: #332d27;
+  
+  margin: 0;
+  padding: 0;
+}
+
+/* 20261027-Add-全画面共通の背景設定 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    
+    /* ▼ ここから木目調の設定を追加・変更 ▼ */
+    /* background-image: url('../img/Woody-texture-29.png');  木目調の画像 */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8)), url('../img/Woody-texture-29.png');
+    /*                                ▲上半部分                ▲下半部分*/
+    /* reference https://illust-ryokka.jp/material/background/woody-texture/ */
+    
+    background-attachment: fixed;                /* スクロール時に背景を固定 */
+    background-size: cover;                      /* 画面全体を覆う */
+    background-position: center;                 /* 中央寄せ */
+    background-color: #f4edd9;                   /* 画像が出ない時の保険（淡いベージュ） */
+    color: #332d27;                              /* 木目に馴染む濃いグレーに変更（元の #222 のままでもOK） */
+    /* ▲ ここまで ▲ */
 }
 
 /* 各ページのメインコンテンツを包む枠（中央寄せ用） */
@@ -63,6 +107,25 @@ nav[data-include-html] {
 .nav-links a:hover {
     color: #000; /* マウスを乗せたら黒にする */
     text-decoration: none;
+}
+
+/* メインコンテンツの視認性アップのための設定例 */
+main, .container {
+  /* 半透明の白（または淡いクリーム色）の背景を敷く */
+  background-color: rgba(255, 255, 255, 0.85); 
+  
+  /* 角を少し丸める */
+  border-radius: 8px;
+  
+  /* 内側に余白を作る */
+  padding: 20px;
+  
+  /* 少しだけ影をつけて背景から浮かせる */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  
+  /* 上下の余白調整 */
+  margin: 20px auto;
+  max-width: 1200px; /* 既存のレイアウトに合わせて調整してください */
 }
 
 /* --- ここからギャラリー（Gridレイアウト）のデザイン --- */
