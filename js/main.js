@@ -196,10 +196,74 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==========================================
+    // 6. 💡【新規】為替レートの取得と表示（Newsページ用）
+    //    USE: https://www.exchangerate-api.com/
+    //    別無料API（例：ExchangeRate-API）
+    //    OTHER : https://openexchangerates.org/
+    //     https://currencyfreaks.com/blog/Open-Exchange-Rates-Api-Pricing-Alternative
+    //    参照 : https://qiita.com/q-1-p/items/daeb6ddc1b51d78f3650
+    // ==========================================
+    const exchangeRateEl = document.getElementById('exchange-rates');
 
+    function loadExchangeRates() {
+        if (!exchangeRateEl) {
+            console.log('Exchange rate element not found, skipping fetch.');
+            return;
+        }
+        
+        console.log('Starting to fetch exchange rates from open.er-api.com...');
+        
+        fetch('https://open.er-api.com/v6/latest/JPY')
+            .then(response => {
+                console.log('Response received:', response.status, response.statusText);
+                if (response.ok) return response.json();
+                throw new Error('為替データの取得に失敗しました (Status: ' + response.status + ')');
+            })
+            .then(data => {
+                console.log('Exchange rate data successfully parsed:', data);
+                
+                const rates = data.rates;
+                const targetCurrencies = ['USD', 'EUR', 'GBP', 'AUD', 'CNY', 'TWD'];
+                const currencyNames = {
+                    'USD': 'アメリカドル',
+                    'EUR': 'ユーロ',
+                    'GBP': 'イギリスポンド',
+                    'AUD': 'オーストラリアドル',
+                    'CNY': '中国元',
+                    'TWD': '台湾ドル'
+                };
 
+                let htmlContent = '<ul style="list-style: none; padding: 0;">';
+                targetCurrencies.forEach(currency => {
+                    if (rates[currency]) {
+                        const rateInJpy = (1 / rates[currency]).toFixed(2);
+                        const name = currencyNames[currency] || currency;
+                        htmlContent += `
+                            <li style="margin-bottom: 15px; border-bottom: 1px dotted #ccc; padding-bottom: 10px; display: flex; justify-content: space-between;">
+                                <span style="font-weight: bold;">${name} (${currency})</span>
+                                <span><strong>${rateInJpy}</strong> 円</span>
+                            </li>`;
+                    }
+                });
 
+                htmlContent += '</ul>';
+                htmlContent += `<p style="font-size: 12px; color: #888; margin-top: 20px; text-align: right;">
+                    最終更新時刻: ${new Date(data.time_last_update_utc).toLocaleString('ja-JP')}
+                </p>`;
+                
+                exchangeRateEl.innerHTML = htmlContent;
+            })
+            .catch(error => {
+                console.error('Exchange rate fetch error:', error);
+                exchangeRateEl.innerHTML = `
+                    <div style="color: #d9534f; padding: 10px; border: 1px solid #d9534f; border-radius: 4px;">
+                        <p>データの読み込みに失敗しました。</p>
+                        <p style="font-size: 12px;">エラー詳細: ${error.message}</p>
+                    </div>`;
+            });
+    }
 
-
+    loadExchangeRates();
 
 });
